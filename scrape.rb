@@ -27,6 +27,7 @@ page.links.each { |link|
 course_links = page.links
 # Loop through all courses
 for course_link in course_links
+  # Hack to differentiate course links from other links on the page
   if course_link.text.length < 100 || course_link.text.split(" ").join(" ") == "Prometheus Fundamentals"
     next
   end
@@ -42,6 +43,7 @@ for course_link in course_links
 
   # Loop through all lectures in given course
   for lecture_link in lecture_links
+    # Hack to differentiate lecture links from other links on the page
     if lecture_link.text.length < 100
       next
     end
@@ -52,7 +54,6 @@ for course_link in course_links
 
     # Get lecture content
     content = ""
-
     unless page.at("div.lecture-text-container").nil?
       page.at("div.lecture-text-container").children.children.each do |p|
         content <<  p
@@ -60,7 +61,7 @@ for course_link in course_links
 
       puts "Scraping next lecture........#{title}"
 
-      # Write results to file
+      # Write scraped results to file
       file.write("/////\n")
       file.write(title + "\n")
       file.write("/////\n\n")
@@ -70,5 +71,4 @@ for course_link in course_links
 end
 
 file.close
-
 puts "Finished! Check results.txt for all courses and their text content :)"
