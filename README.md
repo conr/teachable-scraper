@@ -9,6 +9,6 @@ Note: <code>LOGIN_URL</code> must be the login page of the course <b>NOT</b> htt
 
 <code>$ gem install mechanize</code>
 
-<code>$ ruby scraper.rb</code>
+<code>$ ruby scrape.rb</code>
 
 View results in <code>results.txt</code>
